@@ -11,4 +11,5 @@
 
 area({rectangle, Width, Height}) -> Width * Height;
 area({circle, Radius}) -> 3.14 * Radius * Radius;
+area({triangle, Base, Height}) -> 0.5 * Base * Height;
 area({square, Side})             -> Side * Side.
