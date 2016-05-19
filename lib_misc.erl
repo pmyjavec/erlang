@@ -1,5 +1,5 @@
 -module(lib_misc).
--export([tuple_to_list/1,test/0, timer/1]).
+-export([tuple_to_list/1,test/0, timer/1, fdate/0]).
 -compile({no_auto_import,[tuple_to_list/1]}).
 
 % tests
@@ -18,3 +18,8 @@ timer(F) ->
     F(),
     End  = now(),
     [ element(I, End) - element(I, Start) || I <- lists:seq(1, size(Start)) ].
+
+fdate() ->
+    {Y, M, D} = date(),
+    {{_,_,_},{Hour, Minute, Seconds}} = erlang:localtime(),
+    io:fwrite("~2..0B:~2..0B:~2..0B ~2..0B/~2..0B/~p ~n", [Hour, Minute, Seconds, D, M, Y]).
